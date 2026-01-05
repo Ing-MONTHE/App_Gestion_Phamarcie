@@ -10,19 +10,15 @@
 </head>
 
 <body>
-    <!-- zone gauche -->
+    <!-- Cote gauche -->
     {% include "zone_gauche.html" %}
 
     <div class="app-content">
         {% include "header.html" %}
         {% include "header2.html" %}
-        {% include "produit.html" %}
-        
-        {% block produits %}
-        {% endblock produits %}
+        {% block produits %}{% endblock produits %}
     </div>
-
-</body>
+    
 
     <!-- partial -->
     <script  src="{% static "script.js" %}"></script>
