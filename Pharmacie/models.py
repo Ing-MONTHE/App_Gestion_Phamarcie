@@ -15,26 +15,26 @@ class Produit(models.Model):
     description = models.TextField()
     date_ajout = models.DateTimeField(auto_now_add=True)
     date_expiration = models.DateField()
-    #image = models.ImageField(null=True, blank=True, upload_to="media/")
+    image = models.ImageField(null=True, blank=True, upload_to="media/")
 
-    class Meta:
-        ordering = ['-date_ajout']
-    
     def statut_quantite(self):
-        #si la quantite est egale a 0, affiche rupture de stock (Rouge)
+        #si la quantite est egale a 0, affiche rupture de stock (rouge)
         if self.quantite == 0:
-            return "Rupture de stock"
+            return f"({self.quantite}) Rupture_Stock"
         
-        #Sinon si la quantite est inferieur ou egale a 15, affiche stock faible (Orange)
-        elif self.quantite <= 15:
-            return "Stock faible"
+        #Sinon si la quantite est inferieur ou egale a 60, affiche stock faible (Orange)
+        elif self.quantite <= 60:
+            return f"({self.quantite}) Faible_Stock"
 
         #si la quantite est superieure a 15, le produit est en stock (vert)
         else:
-            return "Stock suffisant"
-
+            return f"({self.quantite}) Stock_suffisant"
+        
     def __str__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['-date_ajout']
 
 class Customer(models.Model):
     name = models.CharField(max_length=100)
