@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
+from django.contrib import messages
+from datetime import datetime
 from .models import Produit, Categories
 
 class Affichage(ListView):
